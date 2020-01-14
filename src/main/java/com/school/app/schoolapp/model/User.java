@@ -1,9 +1,13 @@
 package com.school.app.schoolapp.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -16,6 +20,19 @@ public class User {
 	String password;
 	String email;
 	String mobileNumber;
+	
+
+	boolean hasAgreedTerms;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 	public long getId() {
 		return id;
 	}
@@ -51,5 +68,11 @@ public class User {
 	}
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+	public boolean isHasAgreedTerms() {
+		return hasAgreedTerms;
+	}
+	public void setHasAgreedTerms(boolean hasAgreedTerms) {
+		this.hasAgreedTerms = hasAgreedTerms;
 	}
 }

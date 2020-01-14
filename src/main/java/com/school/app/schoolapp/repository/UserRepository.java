@@ -8,4 +8,6 @@ import com.school.app.schoolapp.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	User findByFirstName(String username);
+
 }
