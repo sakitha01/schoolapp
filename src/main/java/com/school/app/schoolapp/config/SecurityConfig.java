@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.authorizeRequests()
 								.antMatchers("/getallstudents").hasRole("USER")
 								.antMatchers("/hello").hasAuthority("ROLE_ADMIN")
-								.antMatchers("/authenticate").permitAll()
+								.antMatchers("/authenticate","/userreg","/create_student","/downloadFile/{fileName:.+}","/all_students").permitAll()
 								.anyRequest().authenticated()
 								.and().sessionManagement()
 								.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -61,5 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
+	
 
 }

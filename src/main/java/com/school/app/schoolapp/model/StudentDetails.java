@@ -1,9 +1,13 @@
 package com.school.app.schoolapp.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class StudentDetails {
@@ -27,6 +31,13 @@ public class StudentDetails {
 	private String pincode;
 	private String mobileNum;
 	private String altMobileNum;
+	
+	private String profilePicPath;
+	
+	
+	private Date dob;
+	
+	private String sex;
 	
 	public String getAltMobileNum() {
 		return altMobileNum;
@@ -132,6 +143,30 @@ public class StudentDetails {
 
 	public void setMobileNum(String mobileNum) {
 		this.mobileNum = mobileNum;
+	}
+
+	public String getProfilePicPath() {
+		return profilePicPath;
+	}
+
+	public void setProfilePicPath(String profilePicPath) {
+		this.profilePicPath = profilePicPath;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 }

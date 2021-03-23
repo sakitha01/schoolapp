@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.school.app.schoolapp.model.StudentDetails;
 import com.school.app.schoolapp.service.HomeService;
@@ -25,9 +27,11 @@ public class HomeController {
 		this.homeService = homeService;
 	}
 
-	@PostMapping("/studentsreg")
-	public StudentDetails registerStudent(@Valid @RequestBody StudentDetails studentDetails) {
-	    return homeService.reg(studentDetails);
+	//@PostMapping("/studentsreg")
+	 @RequestMapping(value = "/studentsreg", method = RequestMethod.POST)
+	public StudentDetails registerStudent(@Valid @RequestBody StudentDetails studentDetails, @RequestParam("file") MultipartFile file) {
+		return studentDetails;
+	   // return homeService.reg(studentDetails);
 	}
 	
 	@GetMapping("/getallstudents")

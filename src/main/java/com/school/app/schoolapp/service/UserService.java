@@ -32,7 +32,7 @@ public class UserService {
 	}
 
 	public User reg(@Valid User user) {
-		 Role userRole = roleRepository.findRoleByName(RoleName.ROLE_USER.toString());
+		 Role userRole = roleRepository.findByName(RoleName.ROLE_USER);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		Set<Role> roles = Stream.of(userRole)
                 .collect(Collectors.toCollection(HashSet::new));
